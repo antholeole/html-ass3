@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const products = require("./products");
+const { router: products } = require("./products");
 
 
 const PORT = process.env.PORT || 5050;
