@@ -39,7 +39,6 @@ const Update = () => {
 
     const handleUpdate = async e => {
         e.preventDefault();
-        product.price = inputs.price;
         const response = await fetch('/products/' + inputs.id, {
             method: 'PATCH',
             headers: {
