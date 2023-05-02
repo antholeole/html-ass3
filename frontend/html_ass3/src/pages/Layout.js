@@ -23,6 +23,9 @@ const Layout = () => {
                 <li>
                     <Link to="/delete">Delete</Link>
                 </li>
+                <li>
+                    <Link to="/credits">Credits</Link>
+                </li>
             </ul>
         </div>
       </nav>

@@ -8,6 +8,7 @@ import Create from './pages/Create';
 import Read from './pages/Read';
 import Update from './pages/Update';
 import Delete from './pages/Delete';
+import Credits from './pages/Credits';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path='read' element={<Read />} />
           <Route path='update' element={<Update />} />
           <Route path='delete' element={<Delete />} />
+          <Route path='credits' element={<Credits />} />
         </Route>
       </Routes>
     </BrowserRouter>
