@@ -1,0 +1,12 @@
+.create-page {
+    padding: 16px;
+}
+
+.create-page form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-page form label {
+    padding: 8px;
+}
