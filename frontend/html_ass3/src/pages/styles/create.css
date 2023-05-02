@@ -5,8 +5,13 @@
 .create-page form {
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 .create-page form label {
     padding: 8px;
+}
+
+.create-page form label input {
+    margin-left: 8px;
 }
