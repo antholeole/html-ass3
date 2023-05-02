@@ -8,12 +8,14 @@ const Delete = () => {
     const [product, setProduct] = useState([]);
     const [isProduct, setIsProduct] = useState(false);
     const [isValid, setIsValid] = useState(true);
+    const [isSuccessful, setIsSuccessful] = useState(false);
 
     const handleChange = (event) => {
         setIsValid(true);
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
+        setIsSuccessful(false);
     }
 
     const handleSubmit = (event) => {
@@ -46,6 +48,7 @@ const Delete = () => {
 
         console.log(body);
         setIsProduct(false);
+        setIsSuccessful(true);
     }
 
     return (
@@ -90,6 +93,9 @@ const Delete = () => {
                     </Table>
                     <Button onClick={handleDelete}>Delete Product</Button>
                 </div>
+            }
+            {isSuccessful &&
+                <p>Successfully deleted item from database.</p>
             }
         </div>
     );

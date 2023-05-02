@@ -4,11 +4,13 @@ import { useState } from 'react';
 
 const Create = () => {
     const [inputs, setInputs] = useState({});
+    const [isSuccessful, setIsSuccessful] = useState(false);
 
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
+        setIsSuccessful(false);
     }
 
     const handleCreate = async e => {
@@ -44,6 +46,7 @@ const Create = () => {
             const body = await response.text();
     
             console.log(body);
+            setIsSuccessful(true);
         }
     }
 
@@ -72,8 +75,11 @@ const Create = () => {
                 <label>Enter rating count: 
                     <input type='number' name='count' value={inputs.count} onChange={handleChange} />
                 </label>
-                <input type='submit' />
+                <input type='submit' disabled={isSuccessful} />
             </form>
+            {isSuccessful &&
+                <p>Successfully added new item to database.</p>
+            }
         </div>
     );
 };
