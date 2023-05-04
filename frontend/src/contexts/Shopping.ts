@@ -1,15 +1,9 @@
 import { useState } from "react"
 import { createContainer } from "unstated-next"
 import { Item } from "../data/Item"
-import Items from "../data/products.json"
 
 const useShoppingCart = () => {
-    const products = Items
-        .products
-        .map((product) => ({
-            ...product,
-            quantity: 0
-        })) as Item[];
+    const products: Item[] = [];
 
 
     let [shoppingCart, setShoppingCart] = useState<Item[]>(products)
@@ -24,7 +18,7 @@ const useShoppingCart = () => {
         }
 
         const newShoppingCart = shoppingCart.map((item) =>
-            item.name === productName ? {
+            item.title === productName ? {
                 ...item,
                 quantity
             } : item
