@@ -50,7 +50,7 @@ router.patch("/:productId", async (req, res) => {
   let collection = db.collection(COLLECTION);
 
   await collection.updateOne({ _id: parseInt(req.params.productId) }, { $set: req.body });
-
+π
   res.status(204).send();
 });
 
