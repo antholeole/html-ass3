@@ -10,15 +10,15 @@ export const NavBar = () => {
     const pages = Pages.useContainer();
 
     return (
-        <Navbar bg='light'>
+        <Navbar bg='dark'>
             <Container>
                 <Navbar.Brand className='home-button' onClick={ pages.goToLanding }>
-                    <img alt='' src='../../images/waifu.png' width='30' height='30' />
+                    <img src="waifu.png" width='30' height='30'/>
                     IRL Fire Reaction Clothing Co.
                 </Navbar.Brand>
                 <Nav>
-                    <Nav.Link onClick={ pages.goToProducts } >Products</Nav.Link>
-                    <Nav.Link onClick={ pages.goToCart } >Cart</Nav.Link>
+                    <Nav.Link className='page-link' onClick={ pages.goToProducts } >Products</Nav.Link>
+                    <Nav.Link className='page-link' onClick={ pages.goToCart } >Cart</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>
