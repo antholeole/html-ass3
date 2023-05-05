@@ -29,7 +29,7 @@ export const ShoppingCartTable = () => {
             {items.map((item) => <tr>
                 <td>
                     <p>
-                        {item.name}
+                        {item.title}
                     </p>
                     <img style={{
                         width: "100px",

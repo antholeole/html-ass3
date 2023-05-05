@@ -1,24 +1,22 @@
-import React from "react";
-import { Item } from "../../data/Item";
-import { Badge, Button, ButtonGroup, Card, Row } from "react-bootstrap";
+import React from 'react'
 import { Shopping } from "../../contexts/Shopping";
+import { Item } from "../../data/Item";
+import { Badge, Button, ButtonGroup, Card } from "react-bootstrap";
 
-
-export const ProductDisplay = ({ products }: { products: Item[] }) => {
+const ProductCard = ({ product }: { product: Item }) => {
     const shopping = Shopping.useContainer();
 
-    return <Row xs={1} md={2} className="g-4 p-2">
-        {products.map((product) => <Card
+    return <Card
             style={{ width: '18rem' }}
-            key={product.name}
+            key={product.title}
             className="m-2 p-0"
         >
             <Card.Img
                 variant="top"
-                src={`/hats/${product.image}`}
+                src={product.image}
                 className={"p-2"}
             />
-            <Card.Title>{product.name}</Card.Title>
+            <Card.Title>{product.title}</Card.Title>
             <Card.Body>
                 <div className="d-block">
                 <Badge>
@@ -36,7 +34,7 @@ export const ProductDisplay = ({ products }: { products: Item[] }) => {
                             width: "30px"
                         }}
                         onClick={() => shopping.updateQuanity(
-                            product.name,
+                            product.title,
                             product.quantity - 1
                         )}>-</Button>
                     <div className="item-quantity"
@@ -54,18 +52,18 @@ export const ProductDisplay = ({ products }: { products: Item[] }) => {
                         >{product.quantity}</p>
                     </div>
 
-                    <Button variant="add-item"
+                    <Button variant="primary"
                         style={{
                             width: "30px"
                         }}
                         onClick={() => shopping.updateQuanity(
-                            product.name,
+                            product.title,
                             product.quantity + 1
                         )}>+</Button>
                 </ButtonGroup>
             </Card.Footer>
 
-        </Card >)
-        }
-    </Row>
+        </Card >;
 }
+
+export default ProductCard;

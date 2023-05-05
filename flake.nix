@@ -16,6 +16,8 @@
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             nodejs-19_x
+            docker-compose
+            docker
           ];
         };
       });
