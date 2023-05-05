@@ -1,0 +1,273 @@
+/* main.css */
+
+:root {
+    --color-primary: #d233ba;
+    --color-secondary: #45d416;
+    --color-bg: #000000;
+    --gradient: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+html {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: var(--color-bg);
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Verdana', sans-serif;
+}
+
+.hl {
+    color: var(--color-primary);
+}
+
+.center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* NAVBAR */
+
+nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 50px;
+    background-color: var(--color-bg);
+}
+
+nav ul {
+    list-style: none;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 10px;
+    color: black;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav ul li.spacer {
+    flex-grow: 1;
+}
+
+nav ul li.active:after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    margin: 0 auto;
+    background: var(--color-primary);
+}
+
+nav ul li.logo img {
+    width: 50px;
+    height: 50px;
+}
+
+/* END NAVBAR */
+
+/* BEGIN FOOTER */
+
+footer {
+    padding: 50px;
+    background-color: rgb(22, 22, 22);
+    color: gray;
+    text-align: center;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer a {
+    color: gray;
+}
+/* END FOOTER */
+
+/* index.css */
+
+/* BEGIN SPLASH */
+.splash {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: row;
+    margin: 0 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.splash .text {
+    flex: 1;
+}
+
+.splash .text h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.splash .text p {
+    text-align: center;
+    color: gray;
+}
+
+.splash .text button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient);
+    cursor: pointer;
+}
+
+.splash .text button a {
+    color: white;
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.splash .img {
+    flex: 1;
+}
+
+.splash .img img {
+    max-width: 400px;
+    max-height: 80%;
+}
+
+.splash .paw {
+    position: absolute;
+    opacity: 30%;
+    width: 150px;
+    rotate: -45deg;
+    z-index: -1;
+}
+
+@media (max-width: 900px) {
+    .splash {
+        margin: 0;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+
+        gap: 80px;
+    }
+}
+
+/* END SPLASH */
+
+/* STATS */
+
+.stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 10px 50px;
+    padding: 50px;
+    border: 1px solid var(--color-secondary);
+    border-radius: 30px;
+    margin-bottom: 10px;
+}
+
+.stats .stat {
+    flex: 1;
+    display: grid;
+    grid-template-areas: "icon stat"
+                         "icon text";
+    column-gap: 10px;
+}
+
+.stats h4 {
+    grid-area: stat;
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.stats p {
+    grid-area: text;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    color: gray;
+}
+
+.stats .stat i {
+    grid-area: icon;
+    width: 4rem;
+    color: var(--color-primary);
+    font-size: 3rem;
+}
+
+@media (max-width: 900px) {
+    .stats {
+        margin: 0;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+
+        gap: 80px;
+    }
+}
+
+/* END STATS */
+
+/* pets.css */
+
+#pets {
+    margin: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+    grid-auto-rows: 1fr;
+}
+
+/* pet.css */
+
+#pet-name {
+    padding-left: 20px;
+    color: var(--color-primary);
+}
+
+.pet-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+}
+
+.pet-container p {
+    color: gray;
+}
+
+/* contact.css */
+
+.contact {
+    padding: 20px;
+}
+
+.about h4 {
+    color: var(--color-primary);
+}
