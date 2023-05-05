@@ -10,16 +10,28 @@ router.post("/login", async (req, res) => {
 
     const { username, password } = req.body;
 
+    if (username == undefined || password == undefined) {
+        res.statusMessage = "Please submit both a username and password";
+        res.status(400).send();
+        return;        
+    }
+
     let collection = db.collection(COLLECTION);
-    let result = await collection.findOne({ 
+    let result = await collection.findOne({
         username: username,
-        password: password
     });
 
     if (!result) {
+        res.statusMessage = `No user with name ${username}`;
         res.status(404).send();
         return;
-    }   
+    }
+    
+    if (result.password !== password) {
+        res.statusMessage = "Incorrect password!";
+        res.status(400).send();
+        return;
+    }
 
     if (result.password == password) {
         res.status(200).send(result.key);
@@ -33,7 +45,8 @@ router.post("/register", async (req, res) => {
 
     let result = await collection.findOne({ username: req.body.username });
 
-    if (result) { // already a user
+    if (result) { 
+        res.statusMessage = "There already is a user with that name";
         res.status(400).send();
         return;
     }
@@ -47,6 +60,7 @@ router.post("/register", async (req, res) => {
     try {
         await collection.insertOne(user);
     } catch (e) {
+        res.statusMessage = "Could not insert user into database";
         res.status(400).send(e);
         return;
     }

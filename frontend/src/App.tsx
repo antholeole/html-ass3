@@ -4,6 +4,7 @@ import { CartPage } from './pages/cart/Cart';
 import { LandingPage } from './pages/landing/Landing';
 import { ConfirmationPage } from './pages/confirmation/Confirmation';
 import { ProductsPage } from './pages/products/Products';
+import { LoginModal } from './components/LoginModal';
 
 function App() {
   const pageContainer = Pages.useContainer();
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <LoginModal />
       {switchOnPage(pageContainer.page)}
     </div>
   );

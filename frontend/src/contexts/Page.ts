@@ -15,6 +15,8 @@ export class Confirmation extends NavigationPage {
 
 const usePages = () => {
     let [page, setPage] = useState<NavigationPage>(new Landing())
+    let [loginModalIsShown, setLoginModalIsShown] = useState<boolean>(false)
+
 
     const goHome = () => {
         setPage(new Home())
@@ -42,6 +44,8 @@ const usePages = () => {
         goToProducts,
         goToCart,
         goToConfirmation,
+        loginModalIsShown,
+        toggleLoginModalTo: setLoginModalIsShown,
         page
     }
 }
