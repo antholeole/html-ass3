@@ -12,7 +12,7 @@ export const CartPage = () => {
     return <>
         <Button
             className="m-3"
-            onClick={pages.goHome}
+            onClick={pages.goToLanding}
         ><ArrowLeft /> Return</Button>
         <ShoppingCartTable />
         <Payment/>

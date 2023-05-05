@@ -12,29 +12,15 @@ export const NavBar = () => {
     return (
         <Navbar bg='light'>
             <Container>
-                <Navbar.Brand onClick={ pages.goToLanding }>IRL Fire Reaction Clothing Co.</Navbar.Brand>
+                <Navbar.Brand className='home-button' onClick={ pages.goToLanding }>
+                    <img alt='' src='../../images/waifu.png' width='30' height='30' />
+                    IRL Fire Reaction Clothing Co.
+                </Navbar.Brand>
                 <Nav>
                     <Nav.Link onClick={ pages.goToProducts } >Products</Nav.Link>
+                    <Nav.Link onClick={ pages.goToCart } >Cart</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>
     );
-
-    // return <>
-    //     <nav className='navigation'>
-    //         <div className='navigation-menu'>
-    //             <ul>
-    //                 <li>
-    //                     <Button className='page-link' onClick={ pages.goToLanding } >Home</Button>
-    //                 </li>
-    //                 <li>
-    //                     <Button className='page-link' onClick={ pages.goToProducts } >Products</Button>
-    //                 </li>
-    //                 <li>
-    //                     <Button className='page-link' onClick={ pages.goToCart } >Cart</Button>
-    //                 </li>
-    //             </ul>
-    //         </div>
-    //     </nav>
-    // </>
 }
