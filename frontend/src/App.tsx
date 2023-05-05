@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cart, Confirmation, Home, NavigationPage, Pages, Landing, Products } from './contexts/Page';
+import { Cart, Confirmation, NavigationPage, Pages, Landing, Products } from './contexts/Page';
 import { CartPage } from './pages/cart/Cart';
 import { LandingPage } from './pages/landing/Landing';
 import { ConfirmationPage } from './pages/confirmation/Confirmation';
