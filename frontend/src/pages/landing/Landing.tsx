@@ -19,12 +19,12 @@ export const LandingPage = () => {
                     content is hard to find. CSS and HTML? easy.
                 </p>
                 <button>
-                    <a href="pets.html">See the pets <i className="fa fa-arrow-right"></i></a>
+                    <a href="pets.html">See the articles of clothing <i className="fa fa-arrow-right"></i></a>
                 </button>
             </div>
             </div>
             <div className="img center-content">
-                <img src="/myotherimages/pet_love.jpg" />
+                <img src="waifu.png" />
             </div>
         </section>
         <section className="stats">
@@ -36,7 +36,7 @@ export const LandingPage = () => {
             <div className="stat">
                 <h4>23 Years</h4>
                 <i className="fa-solid fa-clock"></i>
-                <p>Of Serving people and Pets</p>
+                <p>Of Serving the People </p>
             </div>
             <div className="stat">
                 <h4>43 Million</h4>
