@@ -1,10 +1,9 @@
 import React from 'react';
 import { Cart, Confirmation, Home, NavigationPage, Pages, Landing, Products } from './contexts/Page';
-import { Shopping } from './contexts/Shopping';
 import { CartPage } from './pages/cart/Cart';
 import { LandingPage } from './pages/landing/Landing';
-import { ProductsPage } from './pages/products/ProductsPage';
 import { ConfirmationPage } from './pages/confirmation/Confirmation';
+import { ProductsPage } from './pages/products/Products';
 
 function App() {
   const pageContainer = Pages.useContainer();

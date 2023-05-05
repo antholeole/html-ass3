@@ -11,13 +11,13 @@ export const NavBar = () => {
             <div className='navigation-menu'>
                 <ul>
                     <li>
-                        <Button className='page-link' onClick={ pages.goToLanding } >Home</Button>
+                        <Button className='page-link' onClick={pages.goToLanding} >Home</Button>
                     </li>
                     <li>
-                        <Button className='page-link' onClick={ pages.goToProducts } >Products</Button>
+                        <Button className='page-link' onClick={pages.goToProducts} >Products</Button>
                     </li>
                     <li>
-                        <Button className='page-link' onClick={ pages.goToCart } >Cart</Button>
+                        <Button className='page-link' onClick={pages.goToCart} >Cart</Button>
                     </li>
                 </ul>
             </div>
