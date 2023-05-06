@@ -21,10 +21,10 @@ export const NavBar = () => {
                 <Nav>
                     <Nav.Link className='page-link' onClick={pages.goToProducts} >Products</Nav.Link>
                     <Nav.Link className='page-link' onClick={pages.goToCart} >Cart</Nav.Link>
-                    <Button variant={user.userIsLoggedin() ? "secondary" : "primary"}
-                        onClick={user.userIsLoggedin() ? user.logOutUser : () => pages.toggleLoginModalTo(true)}
+                    <Button variant={user.userIsLoggedIn ? "secondary" : "primary"}
+                        onClick={user.userIsLoggedIn ? user.logOutUser : () => pages.toggleLoginModalTo(true)}
                     >
-                        {user.userIsLoggedin() ? "Log Out" : "Log In"}
+                        {user.userIsLoggedIn ? "Log Out" : "Log In"}
                     </Button>
                 </Nav>
             </Container>

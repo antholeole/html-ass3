@@ -2,9 +2,12 @@ import React from "react";
 import { Table } from "react-bootstrap"
 import { Shopping } from "../contexts/Shopping";
 import { calcTotal } from "../data/calcTotal";
+import { User } from "../contexts/User";
 
 export const ShoppingCartTable = () => {
     const shopping = Shopping.useContainer();
+    const user = User.useContainer();
+
 
     const items = shopping.shoppingCart.filter((item) => item.quantity > 0);
     const totals = calcTotal(shopping.shoppingCart);
@@ -22,7 +25,7 @@ export const ShoppingCartTable = () => {
             {items.length == 0 && <tr>
                 <td colSpan={3}>
                     <p className="text-center">
-                        Your cart is empty!
+                        {user.userIsLoggedIn ? "Your cart is empty!" : "Please Login to view cart!"}
                     </p>
                 </td>
             </tr>}
@@ -34,7 +37,7 @@ export const ShoppingCartTable = () => {
                     <img style={{
                         width: "100px",
                     }}
-                        src={`/hats/${item.image}`}
+                        src={item.image}
                     />
                 </td>
                 <td>

@@ -5,6 +5,7 @@ import { LandingPage } from './pages/landing/Landing';
 import { ConfirmationPage } from './pages/confirmation/Confirmation';
 import { ProductsPage } from './pages/products/Products';
 import { LoginModal } from './components/LoginModal';
+import ToasterDisplay from './components/ToasterDisplay';
 
 function App() {
   const pageContainer = Pages.useContainer();
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <div className="App">
+      <ToasterDisplay />
       <LoginModal />
       {switchOnPage(pageContainer.page)}
     </div>

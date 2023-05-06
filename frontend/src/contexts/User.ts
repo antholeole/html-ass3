@@ -1,17 +1,21 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { createContainer } from "unstated-next"
 
 const useUser = () => {
     const [key, setKey] = useState<string | null>(null)
+    const [userIsLoggedIn, setUserIsLoggedIn] = useState<boolean>(false);
     
-    const userIsLoggedin = () => key != null
+    useEffect(() => {
+        setUserIsLoggedIn(key !== null);
+    }, [key]);
+
 
     const logOutUser = () => {
         setKey(null)
     }    
 
     return {
-        userIsLoggedin,
+        userIsLoggedIn,
         loginUser: setKey,
         logOutUser,
         getApiKey: () => key,

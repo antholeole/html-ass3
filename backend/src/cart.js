@@ -1,6 +1,8 @@
 const express = require("express");
 const { connect } = require("./conn.js");
 const { loggedInMiddleware } = require("./user.js");
+const { findAllByIds } = require("./products.js");
+
 
 
 const router = express.Router();
@@ -17,7 +19,14 @@ router.get("/", async (req, res) => {
         userId: req.userId
     }).toArray();
 
-    res.status(200).send(results);
+    const products = await findAllByIds(
+        results.map((product) => product.productId)
+    )
+
+    res.status(200).send(products.map((product) => ({
+        ...product,
+        quantity: results.find((oto) => oto.productId === product.id).quantity
+    })));
 });
 
 /**
@@ -55,7 +64,7 @@ router.delete("/:productId", async (req, res) => {
 
     let results = await collection.deleteOne({
         userId: req.userId,
-        productId: parseInt(req.body.productId),
+        productId: parseInt(req.params.productId),
     });
 
     res.status(200).send(results);
@@ -66,8 +75,6 @@ router.delete("/:productId", async (req, res) => {
 router.patch("/:productId", async (req, res) => {
     const db = await connect();
     let collection = db.collection(COLLECTION);
-
-    console.log(req.userId, req.params.productId);
 
     const product = await collection.findOne({
         userId: req.userId,

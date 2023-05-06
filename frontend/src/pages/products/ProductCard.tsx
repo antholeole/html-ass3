@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Shopping } from "../../contexts/Shopping";
 import { Item } from "../../data/Item";
 import { Badge, Button, ButtonGroup, Card } from "react-bootstrap";
 import { Pages } from "../../contexts/Page";
+import { User } from '../../contexts/User';
 
 const ProductCard = ({ product }: { product: Item }) => {
     const shopping = Shopping.useContainer();
     const pages = Pages.useContainer();
+    const user = User.useContainer();
+
+    const [displayQuantity, setDisplayQuantity] = useState(0);
+
+    useEffect(() => {
+        const itemFromCart = shopping.shoppingCart.find((p) => p.id === product.id);
+
+        if (!itemFromCart) {
+            setDisplayQuantity(0);
+        } else {
+            setDisplayQuantity(itemFromCart.quantity);
+        }
+    }, [shopping])
 
     return (
         <div onClick={ pages.goToProducts }>
@@ -38,7 +52,7 @@ const ProductCard = ({ product }: { product: Item }) => {
                                 width: "30px"
                             }}
                             onClick={() => shopping.updateQuanity(
-                                product.title,
+                                product.id,
                                 product.quantity - 1
                             )}>-</Button>
                         <div className="item-quantity"
@@ -53,7 +67,7 @@ const ProductCard = ({ product }: { product: Item }) => {
                                 style={{
                                     margin: "0"
                                 }}
-                            >{product.quantity}</p>
+                            >{displayQuantity}</p>
                         </div>
 
                         <Button variant="primary"
@@ -61,7 +75,7 @@ const ProductCard = ({ product }: { product: Item }) => {
                                 width: "30px"
                             }}
                             onClick={() => shopping.updateQuanity(
-                                product.title,
+                                product.id,
                                 product.quantity + 1
                             )}>+</Button>
                     </ButtonGroup>

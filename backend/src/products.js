@@ -50,7 +50,7 @@ router.patch("/:productId", async (req, res) => {
   let collection = db.collection(COLLECTION);
 
   await collection.updateOne({ _id: parseInt(req.params.productId) }, { $set: req.body });
-π
+
   res.status(204).send();
 });
 
@@ -58,7 +58,7 @@ router.delete("/:productId", async (req, res) => {
   const db = await connect();
   let collection = db.collection(COLLECTION);
 
-  const delOut = await collection.deleteOne({ _id: parseInt(req.params.productId) });
+  const delOut = await collection.delete({ _id: parseInt(req.params.productId) });
 
   if (delOut.deletedCount === 0) {
     res.status(404).send();
@@ -68,4 +68,18 @@ router.delete("/:productId", async (req, res) => {
   res.status(204).send();
 });
 
-module.exports.router = router;
+const findAllByIds = async (productIds) => {
+  const db = await connect();
+  let collection = db.collection(COLLECTION);
+
+  return await collection.find({
+    _id: {
+      $in: productIds
+    }
+  }).toArray()
+} 
+
+module.exports = {
+  findAllByIds: findAllByIds,
+  router: router
+};

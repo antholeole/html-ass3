@@ -1,30 +1,80 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { createContainer } from "unstated-next"
 import { Item } from "../data/Item"
+import { Toaster } from "./Toaster"
+import { User } from "./User"
+
 
 const useShoppingCart = () => {
-    const products: Item[] = [];
+    const toaster = Toaster.useContainer();
+    const user = User.useContainer();
 
 
-    let [shoppingCart, setShoppingCart] = useState<Item[]>(products)
+    let [shoppingCart, setShoppingCart] = useState<Item[]>([]);
 
-    const emptyCart = () => {
-        setShoppingCart(products.map((product) => ({ ...product, quantity: 0 })))
+    useEffect(() => {
+        if (user.userIsLoggedIn) {
+            fetchShoppingCart()
+        }
+    }, [user.userIsLoggedIn])
+
+    const emptyCart = () => {};
+
+    const updateQuanity = async (productId: number, quantity: number) => {
+        const itemAlreadyInCart = shoppingCart.some((products) => products.id === productId);
+
+        if (quantity == 0) {
+            await execCartRequest("DELETE", undefined, productId)
+        } if (itemAlreadyInCart) {
+            await execCartRequest("PATCH", JSON.stringify({ "quantity": quantity }), productId)
+        } else {
+            await execCartRequest("POST", JSON.stringify({ "productId": productId }), undefined)
+        }
     }
 
-    const updateQuanity = (productName: String, quantity: number) => {
-        if (quantity < 0) {
+    const fetchShoppingCart = async () => {
+        const apiKey = user.getApiKey();
+
+        if (!apiKey) {
+            toaster.addToast({
+                body: "Please log in to check cart!",
+                title: "Cannot Check Cart"
+            });
+            return;
+        }      
+        
+        const items = await fetch("/cart", {
+            method: "GET",
+            headers: {
+                "apikey": apiKey as string, 
+            },
+        });
+
+        setShoppingCart(await items.json())
+    }
+
+    const execCartRequest = async (
+        method: string, 
+        body: string | undefined, 
+        path: string | number | undefined,
+    ) => {
+        const apiKey = user.getApiKey();
+
+        if (!apiKey) {
+            toaster.addToast({
+                body: "Please log in before editing cart!",
+                title: "Cannot Edit Cart"
+            });
             return;
         }
 
-        const newShoppingCart = shoppingCart.map((item) =>
-            item.title === productName ? {
-                ...item,
-                quantity
-            } : item
-        );
-
-        setShoppingCart(newShoppingCart)
+        await fetch(path ? `/cart/${path}` : `/cart`, {
+            method: method,
+            body: body,
+            headers: {
+                "apikey": apiKey as string, 
+            },
+        });
     }
 
 
