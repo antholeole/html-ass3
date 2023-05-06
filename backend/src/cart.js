@@ -55,7 +55,7 @@ router.delete("/:productId", async (req, res) => {
 
     let results = await collection.deleteOne({
         userId: req.userId,
-        productId: req.body.productId,
+        productId: parseInt(req.body.productId),
     });
 
     res.status(200).send(results);
