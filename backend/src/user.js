@@ -70,5 +70,26 @@ router.post("/register", async (req, res) => {
     });
 });
 
+const loggedInMiddleware = async (req, res, next) => {
+    const apiKey = req.headers['apikey'];
 
-module.exports.router = router;
+    if (!apiKey) {
+        res.status(401).send();
+        return;
+    }
+    
+    const db = await connect();
+    let collection = db.collection(COLLECTION);
+    let result = await collection.findOne({ key: apiKey });
+
+    if (result === null) {
+        res.status(401).send();
+        return;
+    }
+
+    req.userId = result._id.toString();
+    next()
+};
+
+
+module.exports = { router, loggedInMiddleware };
