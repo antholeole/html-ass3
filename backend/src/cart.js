@@ -71,16 +71,8 @@ router.patch("/:productId", async (req, res) => {
 
     const product = await collection.findOne({
         userId: req.userId,
-        productId: req.params.productId
+        productId: parseInt(req.params.productId)
     });
-
-
-
-    console.log(req.params.productId);
-    console.log(await collection.find({
-        userId: req.userId,
-        //productId: req.params.productId
-    }).toArray());
 
     if (product === null) {
         res.statusMessage = `user does not have ${req.params.productId} in the cart`;
@@ -90,7 +82,7 @@ router.patch("/:productId", async (req, res) => {
 
     await collection.updateOne({ 
         userId: req.userId,
-        productId: req.params.productId,
+        productId: parseInt(req.params.productId),
      }, { $set: { quantity: req.body.quantity } });
 
     res.status(200).send();
