@@ -21,6 +21,15 @@ const useShoppingCart = () => {
     const emptyCart = () => {};
 
     const updateQuanity = async (productId: number, quantity: number) => {
+        if (quantity < 0) {
+            toaster.addToast({
+                body: "Quantity cannot be less than 0!",
+                title: "Quantity Less Than 0"
+            });
+            return;
+        }
+
+
         const itemAlreadyInCart = shoppingCart.some((products) => products.id === productId);
 
         console.log(quantity);
@@ -43,12 +52,12 @@ const useShoppingCart = () => {
                 title: "Cannot Check Cart"
             });
             return;
-        }      
-        
+        }
+
         const items = await fetch("/cart", {
             method: "GET",
             headers: {
-                "apikey": apiKey as string, 
+                "apikey": apiKey as string,
             },
         });
 
@@ -59,8 +68,8 @@ const useShoppingCart = () => {
     }
 
     const execCartRequest = async (
-        method: string, 
-        body: string | undefined, 
+        method: string,
+        body: string | undefined,
         path: string | number | undefined,
     ) => {
         const apiKey = user.getApiKey();
@@ -78,7 +87,7 @@ const useShoppingCart = () => {
             body: body,
             headers: {
                 "Content-Type": "application/json",
-                "apikey": apiKey as string, 
+                "apikey": apiKey as string,
             },
         });
 

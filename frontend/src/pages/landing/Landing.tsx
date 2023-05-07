@@ -1,11 +1,13 @@
 import React from 'react';
 import { NavBar } from '../../components/navbar/NavBar';
+import { Pages } from '../../contexts/Page';
 
 export const LandingPage = () => {
+    const page = Pages.useContainer();
+
     return <>
         <NavBar />
         <section className="splash">
-            <img className="paw" src="/myotherimages/paw_print.png" />
             <div className="text center-content">
                 <div>
                 <h1>
@@ -18,8 +20,8 @@ export const LandingPage = () => {
                     for free online. We're glad that we're not getting graded on content, because
                     content is hard to find. CSS and HTML? easy.
                 </p>
-                <button>
-                    <a href="pets.html">See the articles of clothing <i className="fa fa-arrow-right"></i></a>
+                <button onClick={page.goToProducts}>
+                    the articles of clothing <i className="fa fa-arrow-right"></i>
                 </button>
             </div>
             </div>
