@@ -1,9 +1,10 @@
 import React from 'react';
-import { Cart, Confirmation, NavigationPage, Pages, Landing, Products } from './contexts/Page';
+import { Cart, Confirmation, NavigationPage, Pages, Landing, Products, SingleProduct } from './contexts/Page';
 import { CartPage } from './pages/cart/Cart';
 import { LandingPage } from './pages/landing/Landing';
 import { ConfirmationPage } from './pages/confirmation/Confirmation';
 import { ProductsPage } from './pages/products/Products';
+import { SingleProductPage } from './pages/product/SingleProduct';
 import { LoginModal } from './components/LoginModal';
 import ToasterDisplay from './components/ToasterDisplay';
 
@@ -19,7 +20,11 @@ function App() {
       return <ConfirmationPage form={page.form} />;
     } else if (page instanceof Products) {
       return <ProductsPage />;
-    } else {
+    } else if (page instanceof SingleProduct) {
+      return <SingleProductPage item={page.item} />;
+    } 
+    
+    else {
       throw Error("unknown page subtype");
     }
   }

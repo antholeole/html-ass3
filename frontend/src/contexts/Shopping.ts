@@ -23,6 +23,8 @@ const useShoppingCart = () => {
     const updateQuanity = async (productId: number, quantity: number) => {
         const itemAlreadyInCart = shoppingCart.some((products) => products.id === productId);
 
+        console.log(quantity);
+
         if (quantity == 0) {
             await execCartRequest("DELETE", undefined, productId)
         } if (itemAlreadyInCart) {
@@ -50,7 +52,10 @@ const useShoppingCart = () => {
             },
         });
 
-        setShoppingCart(await items.json())
+        const itemsList = await items.json();
+        console.log(itemsList);
+
+        setShoppingCart(itemsList);
     }
 
     const execCartRequest = async (
@@ -72,9 +77,12 @@ const useShoppingCart = () => {
             method: method,
             body: body,
             headers: {
+                "Content-Type": "application/json",
                 "apikey": apiKey as string, 
             },
         });
+
+        await fetchShoppingCart();
     }
 
 
