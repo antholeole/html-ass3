@@ -271,3 +271,7 @@ footer a {
 .about h4 {
     color: var(--color-primary);
 }
+
+.product-card:hover {
+    cursor: pointer;
+}

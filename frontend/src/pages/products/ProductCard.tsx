@@ -20,8 +20,8 @@ const ProductCard = ({ product }: { product: Item }) => {
     }, [shopping])
 
     return (
-        <Card style={{ width: '18rem' }} key={product.title} className="m-2 p-0" >
-            <div onClick={() => navigate('/products/' + product.id)}>
+        <Card style={{ width: '18rem'}} key={product.title} className="m-2 p-0">
+            <div className='product-card' onClick={() => navigate('/products/' + product.id)}>
                 <Card.Img
                     variant="top"
                     src={product.image}

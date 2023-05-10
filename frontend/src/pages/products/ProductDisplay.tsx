@@ -35,7 +35,7 @@ export const ProductDisplay = () => {
             }}
         >
             <Spinner />
-        </div> : <Row xs={1} md={2} className="g-4 p-2">
+        </div> : <Row xs={1} md={2} className="g-2 p-0">
             {products.map((product) => <ProductCard
             key={product.id}    
             product={product} 
