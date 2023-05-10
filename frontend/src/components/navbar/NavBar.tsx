@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button, NavbarBrand } from 'react-bootstrap';
 import { Pages } from "../../contexts/Page";
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -21,11 +20,9 @@ export const NavBar = () => {
                 <Nav>
                     <Nav.Link className='page-link' onClick={pages.goToProducts} >Products</Nav.Link>
                     <Nav.Link className='page-link' onClick={pages.goToCart} >Cart</Nav.Link>
-                    <Button variant={user.userIsLoggedIn ? "secondary" : "primary"}
-                        onClick={user.userIsLoggedIn ? user.logOutUser : () => pages.toggleLoginModalTo(true)}
-                    >
+                    <Nav.Link className='page-link' onClick={user.userIsLoggedIn ? user.logOutUser : () => pages.toggleLoginModalTo(true)}>
                         {user.userIsLoggedIn ? "Log Out" : "Log In"}
-                    </Button>
+                    </Nav.Link>
                 </Nav>
             </Container>
         </Navbar>

@@ -1,0 +1,14 @@
+.product-container {
+    display: flex;
+    flex-direction: row;
+    padding: 16px;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+}
+
+h3 {
+    color: red;
+}

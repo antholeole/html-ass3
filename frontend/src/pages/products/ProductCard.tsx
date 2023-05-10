@@ -32,6 +32,7 @@ const ProductCard = ({ product }: { product: Item }) => {
                 variant="top"
                 src={product.image}
                 className={"p-2"}
+                style={{height: '256px'}}
             />
             <Card.Title>{product.title}</Card.Title>
             <Card.Body>
@@ -40,7 +41,7 @@ const ProductCard = ({ product }: { product: Item }) => {
                         ${product.price.toFixed(2)}
                     </Badge>
                 </div>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto obcaecati a distinctio quae optio minima adipisci atque reprehenderit blanditiis rem est debitis voluptas asperiores fuga magni cumque, consequuntur nulla quod?
+                {product.description}
             </Card.Body>
             <Card.Footer>
                 <ButtonGroup>
