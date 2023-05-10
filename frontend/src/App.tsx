@@ -8,6 +8,7 @@ import { LoginModal } from './components/LoginModal';
 import ToasterDisplay from './components/ToasterDisplay';
 import { Route, Routes } from 'react-router';
 import { NavBar } from './components/navbar/NavBar';
+import { AboutPage } from './pages/about/About';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/products' element={<WithNavbar><ProductsPage /></WithNavbar>} />
         <Route path='/products/:itemId' element={<WithNavbar><SingleProductPage /></WithNavbar>} />
         <Route path='/confirmPurchase' element={<WithNavbar><ConfirmationPage /></WithNavbar>} />
+        <Route path='/about' element={<WithNavbar><AboutPage /></WithNavbar>} />
       </Routes>
     </div>
   );

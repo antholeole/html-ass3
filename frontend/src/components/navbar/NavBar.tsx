@@ -20,6 +20,7 @@ export const NavBar = () => {
                     IRL Fire Reaction Clothing Co.
                 </Navbar.Brand>
                 <Nav>
+                    <Nav.Link className='page-link' onClick={() => navigate('/about')} >About</Nav.Link>
                     <Nav.Link className='page-link' onClick={() => navigate('/products',)} >Products</Nav.Link>
                     <Nav.Link className='page-link' onClick={() => navigate('/cart')} >Cart</Nav.Link>
                     <Nav.Item className='page-link' onClick={user.userIsLoggedIn ? user.logOutUser : () => modal.toggleLoginModalTo(true)}>
