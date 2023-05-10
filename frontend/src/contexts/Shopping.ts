@@ -32,8 +32,6 @@ const useShoppingCart = () => {
 
         const itemAlreadyInCart = shoppingCart.some((products) => products.id === productId);
 
-        console.log(quantity);
-
         if (quantity == 0) {
             await execCartRequest("DELETE", undefined, productId)
         } if (itemAlreadyInCart) {

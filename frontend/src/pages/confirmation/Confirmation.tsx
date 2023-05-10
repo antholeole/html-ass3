@@ -1,22 +1,24 @@
 import React from "react";
-import { PaymentFormInputs } from "../../data/orderForm";
+import type { PaymentFormInputs } from "../../data/orderForm";
 import { Button } from "react-bootstrap";
-import { Pages } from "../../contexts/Page";
 import { Shopping } from "../../contexts/Shopping";
 import { ShoppingCartTable } from "../../components/ShoppingCartTable";
+import { useLocation } from "react-router";
 
-export const ConfirmationPage = ({ form }: { form: PaymentFormInputs }) => {
-    const page = Pages.useContainer();
+export const ConfirmationPage = () => {
     const shopping = Shopping.useContainer();
+
+    // This is not type safe. If you navigated here without setting the 
+    // form values to location, you are dumb.
+    const location = useLocation();
 
     const returnHome = () => {
         shopping.emptyCart();
-        page.goHome();
     }
 
     return <>
     <ShoppingCartTable />
-        {Object.entries(form).map(([key, value]) => {
+        {Object.entries(location.state as PaymentFormInputs).map(([key, value]) => {
             return <p key={key}><b>{key}</b>: {
                 key == "card" ? value.replace(/.(?=.{4})/g, "*") : value 
             }</p>

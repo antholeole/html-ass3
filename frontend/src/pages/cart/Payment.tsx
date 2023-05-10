@@ -4,14 +4,15 @@ import { CreditCard, CurrencyDollar } from "react-bootstrap-icons"
 import { Formik } from "formik";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 import { PaymentFormInputs, paymentFormSchema } from "../../data/orderForm";
-import { Pages } from "../../contexts/Page";
-
+import { useNavigate } from "react-router";
 
 export const Payment = () => {
-    const pages = Pages.useContainer();
+    const navigate = useNavigate();
 
     return <Formik<PaymentFormInputs>
-        onSubmit={pages.goToConfirmation}
+        onSubmit={(formData) => navigate('/confirmPurchase', {
+            state: formData
+        })}
         initialValues={{
             name: "",
             email: "",
@@ -64,7 +65,7 @@ export const Payment = () => {
                         }}
                     >
                         <FormGroup>
-                            <Form.Label val className="mt-2">Email</Form.Label>
+                            <Form.Label className="mt-2">Email</Form.Label>
                             <Form.Control
                                 name="email"
                                 value={values.email}

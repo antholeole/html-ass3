@@ -1,9 +1,7 @@
 import React from 'react';
-import { Pages } from '../../contexts/Page';
 import { useNavigate } from "react-router";
 
 export const LandingPage = () => {
-    const page = Pages.useContainer();
     const navigate = useNavigate();
 
     return <>

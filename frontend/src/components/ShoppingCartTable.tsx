@@ -29,7 +29,7 @@ export const ShoppingCartTable = () => {
                     </p>
                 </td>
             </tr>}
-            {items.map((item) => <tr>
+            {items.map((item) => <tr key={item.id}>
                 <td>
                     <p>
                         {item.title}

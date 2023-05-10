@@ -1,6 +1,6 @@
 import React from 'react';
 import { Alert, Button, Form, FormControl, FormGroup, FormLabel, Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle } from 'react-bootstrap';
-import { Pages } from '../contexts/Page';
+import { Modal as ModalContext } from '../contexts/Modal';
 import { User } from '../contexts/User';
 
 enum SubmissionType {
@@ -9,7 +9,7 @@ enum SubmissionType {
 }
 
 export const LoginModal = () => {
-    const pages = Pages.useContainer();
+    const modal = ModalContext.useContainer();
     const user = User.useContainer();
 
 
@@ -49,13 +49,13 @@ export const LoginModal = () => {
 
         setFormError(null);
 
-        pages.toggleLoginModalTo(false);
+        modal.toggleLoginModalTo(false);
         const key = await res.text();
         user.loginUser(key);
     };
 
     return (
-        <Modal show={pages.loginModalIsShown} onHide={() => pages.toggleLoginModalTo(false)}>
+        <Modal show={modal.loginModalIsShown} onHide={() => modal.toggleLoginModalTo(false)}>
             <ModalHeader>
                 <ModalTitle>Login / Register</ModalTitle>
             </ModalHeader>
@@ -84,7 +84,7 @@ export const LoginModal = () => {
                     </Alert>}
                 </ModalBody>
                 <ModalFooter>
-                    <Button onClick={() => pages.toggleLoginModalTo(false)} variant="danger">Cancel</Button>
+                    <Button onClick={() => modal.toggleLoginModalTo(false)} variant="danger">Cancel</Button>
                     <Button variant="primary" onClick={(e) => handleSubmit(e, SubmissionType.Login)}>
                         Login
                     </Button>
