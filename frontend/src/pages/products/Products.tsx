@@ -7,7 +7,6 @@ export const ProductsPage = () => {
     const [filter, setFilter] = React.useState("");
 
     return <>
-        <NavBar />
         <SearchBar onFilter={setFilter} />
         <ProductDisplay />
     </>;

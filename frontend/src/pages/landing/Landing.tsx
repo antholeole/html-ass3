@@ -1,12 +1,13 @@
 import React from 'react';
 import { NavBar } from '../../components/navbar/NavBar';
 import { Pages } from '../../contexts/Page';
+import { useNavigate } from "react-router";
 
 export const LandingPage = () => {
     const page = Pages.useContainer();
+    const navigate = useNavigate();
 
     return <>
-        <NavBar />
         <section className="splash">
             <div className="text center-content">
                 <div>
@@ -20,7 +21,7 @@ export const LandingPage = () => {
                     for free online. We're glad that we're not getting graded on content, because
                     content is hard to find. CSS and HTML? easy.
                 </p>
-                <button onClick={page.goToProducts}>
+                <button onClick={() => navigate('/products')}>
                     the articles of clothing <i className="fa fa-arrow-right"></i>
                 </button>
             </div>

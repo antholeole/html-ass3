@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Shopping } from "../../contexts/Shopping";
 import { Item } from "../../data/Item";
 import { Badge, Button, ButtonGroup, Card } from "react-bootstrap";
-import { Pages } from "../../contexts/Page";
-import { User } from '../../contexts/User';
+import { useNavigate } from "react-router";
 
 const ProductCard = ({ product }: { product: Item }) => {
     const shopping = Shopping.useContainer();
-    const pages = Pages.useContainer();
-
+    const navigate = useNavigate();
     const [displayQuantity, setDisplayQuantity] = useState(0);
 
     useEffect(() => {
@@ -22,27 +20,24 @@ const ProductCard = ({ product }: { product: Item }) => {
     }, [shopping])
 
     return (
-        <Card
-            onClick={() => pages.goToProductPage(product)}
-            style={{ width: '18rem' }}
-            key={product.title}
-            className="m-2 p-0"
-        >
-            <Card.Img
-                variant="top"
-                src={product.image}
-                className={"p-2"}
-                style={{height: '256px'}}
-            />
-            <Card.Title>{product.title}</Card.Title>
-            <Card.Body>
-                <div className="d-block">
-                    <Badge>
-                        ${product.price.toFixed(2)}
-                    </Badge>
-                </div>
-                {product.description}
-            </Card.Body>
+        <Card style={{ width: '18rem' }} key={product.title} className="m-2 p-0" >
+            <div onClick={() => navigate('/products/' + product.id)}>
+                <Card.Img
+                    variant="top"
+                    src={product.image}
+                    className={"p-2"}
+                    style={{height: '256px'}}
+                />
+                <Card.Title>{product.title}</Card.Title>
+                <Card.Body>
+                    <div className="d-block">
+                        <Badge>
+                            ${product.price.toFixed(2)}
+                        </Badge>
+                    </div>
+                    {product.description}
+                </Card.Body>
+            </div>
             <Card.Footer>
                 <ButtonGroup>
                     <Button
