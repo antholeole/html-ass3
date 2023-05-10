@@ -22,9 +22,9 @@ export const NavBar = () => {
                 <Nav>
                     <Nav.Link className='page-link' onClick={() => navigate('/products',)} >Products</Nav.Link>
                     <Nav.Link className='page-link' onClick={() => navigate('/cart')} >Cart</Nav.Link>
-                    <Nav.Link className='page-link' onClick={user.userIsLoggedIn ? user.logOutUser : () => modal.toggleLoginModalTo(true)}>
+                    <Nav.Item className='page-link' onClick={user.userIsLoggedIn ? user.logOutUser : () => modal.toggleLoginModalTo(true)}>
                         {user.userIsLoggedIn ? "Log Out" : "Log In"}
-                    </Nav.Link>
+                    </Nav.Item>
                 </Nav>
             </Container>
         </Navbar>
