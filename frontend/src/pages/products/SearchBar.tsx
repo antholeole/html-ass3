@@ -15,8 +15,5 @@ export const SearchBar = ({ onFilter }: ISearchBarProps) => {
             type="text"
             onChange={(e) => onFilter(e.target.value)} 
         />
-        <Button onClick={page.goToCart}>
-            Checkout
-        </Button>
     </div>
 } 
