@@ -1,4 +1,5 @@
 .product-container {
+    position: absolute;
     display: flex;
     flex-direction: row;
     padding: 16px;
