@@ -20,7 +20,7 @@ const ProductCard = ({ product }: { product: Item }) => {
     }, [shopping])
 
     return (
-        <Card style={{ width: '18rem'}} key={product.title} className="m-2 p-0">
+        <Card style={{ width: '18rem', display: 'flex', flexDirection: 'column'}} key={product.title} className="m-2 p-0">
             <div className='product-card' onClick={() => navigate('/products/' + product.id)}>
                 <Card.Img
                     variant="top"
@@ -38,7 +38,7 @@ const ProductCard = ({ product }: { product: Item }) => {
                     {product.description}
                 </Card.Body>
             </div>
-            <Card.Footer>
+            <Card.Footer style={{flex: '1', justifyContent: 'flex-end', maxHeight: '54px'}}>
                 <ButtonGroup>
                     <Button
                         variant="primary"
