@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Item } from '../../data/Item'
-import { NavBar } from '../../components/navbar/NavBar';
 import './SingleProduct.css';
 import { useParams } from 'react-router-dom';
 

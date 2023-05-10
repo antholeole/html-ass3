@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavBar } from '../../components/navbar/NavBar';
 import { Pages } from '../../contexts/Page';
 import { useNavigate } from "react-router";
 
